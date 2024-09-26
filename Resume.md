@@ -63,4 +63,56 @@
 
 ### Gitea 이슈 리스트 렌더링 버그 해결 
 
-<a href="https://github.com/harfbuzz/harfbuzz/issues/4850" target="_blank" rel="noopener noreferrer" role="link" style="display: flex; color: inherit; text-decoration: none; user-select: none; transition: background 20ms ease-in; cursor: pointer; flex-grow: 1; min-width: 0px; align-items: center; border: 1px solid rgb(233, 233, 231); border-radius: 4px; padding: 8px 12px; fill: inherit;"><div style="display: flex; align-self: start; height: 32px; width: 32px; margin: 3px 12px 3px 4px; position: relative;"><div><div style="width: 100%; height: 100%;"><img src="https://avatars.githubusercontent.com/u/98369677?v=4" referrerpolicy="same-origin" style="display: block; object-fit: cover; border-radius: 34px; width: 30.192px; height: 30.192px; transition: opacity 100ms ease-out; box-shadow: rgba(15, 15, 15, 0.1) 0px 2px 4px;"></div></div><div style="position: absolute; bottom: -2px; right: -2px;"><div style="width: 100%; height: 100%;"><img src="/images/external_integrations/github-icon.png" referrerpolicy="same-origin" style="display: block; object-fit: cover; border-radius: 4px; width: 14.208px; height: 14.208px; transition: opacity 100ms ease-out; filter: drop-shadow(white 0px 0px 1px) drop-shadow(white 0px 0px 1px) drop-shadow(white 0px 0px 1px);"></div></div></div><div style="display: flex; flex-direction: column; justify-content: center; flex-grow: 1; flex-shrink: 1; overflow: hidden;"><div style="display: flex; align-items: baseline; font-size: 14px;"><div spellcheck="false" style="white-space: nowrap; color: rgb(55, 53, 47); font-weight: 500; overflow: hidden; text-overflow: ellipsis;">ligatures with hangul does not working correctly</div><span style="margin-right: 6px;"></span><span style="display: flex; align-items: center;"><div style="margin-right: 4px;"><div style="width: 100%; height: 100%;"><img src="/images/external_integrations/github-issue-closed-icon.png" referrerpolicy="same-origin" style="display: block; object-fit: cover; border-radius: 4px; width: 14.208px; height: 14.208px; transition: opacity 100ms ease-out;"></div></div><div spellcheck="false" style="white-space: nowrap; color: rgba(55, 53, 47, 0.65);">Closed</div></span></div><div style="display: flex; align-items: center; color: rgba(55, 53, 47, 0.65); font-size: 12px;"><div style="width: 12px; height: 12px; margin-right: 4px;"><img src="/images/external_integrations/github-issue-closed-icon.png" referrerpolicy="same-origin" style="display: block; object-fit: cover; border-radius: 2px; height: 12px;"></div><div spellcheck="false" style="white-space: nowrap; color: rgba(55, 53, 47, 0.65);">#4850</div><span style="margin-left: 3px; margin-right: 3px;">•</span><div spellcheck="false" style="white-space: nowrap; color: rgba(55, 53, 47, 0.65);">cloudchamb3r</div><span style="margin-left: 3px; margin-right: 3px;">•</span><div style="color: rgba(55, 53, 47, 0.65); font-size: 12px; white-space: nowrap;">22일 전에 종료</div></div></div><div role="button" tabindex="0" style="user-select: none; transition: background 20ms ease-in; cursor: pointer; opacity: 0; display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 4px; flex-shrink: 0; margin-right: 4px; color: rgba(55, 53, 47, 0.65);"><svg role="graphics-symbol" viewBox="0 0 13 3" class="dots" style="width: 14px; height: 100%; display: block; fill: inherit; flex-shrink: 0; color: rgba(55, 53, 47, 0.45);"><g><path d="M3,1.5A1.5,1.5,0,1,1,1.5,0,1.5,1.5,0,0,1,3,1.5Z"></path><path d="M8,1.5A1.5,1.5,0,1,1,6.5,0,1.5,1.5,0,0,1,8,1.5Z"></path><path d="M13,1.5A1.5,1.5,0,1,1,11.5,0,1.5,1.5,0,0,1,13,1.5Z"></path></g></svg></div></a>
+<a class="github-link" href="https://github.com/go-gitea/gitea/pull/32081">
+<div class="github-item">
+    <img class="github-profile" src="https://avatars.githubusercontent.com/u/98369677?v=4"></img>
+    <div class="github-index">#32081</div>
+    <strong class="github-title">Fix Bug in Issue/Pull list</strong>
+    <div class="github-status" style="color: grey;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12" height="12"><path d="M5.45 5.154A4.25 4.25 0 0 0 9.25 7.5h1.378a2.251 2.251 0 1 1 0 1.5H9.25A5.734 5.734 0 0 1 5 7.123v3.505a2.25 2.25 0 1 1-1.5 0V5.372a2.25 2.25 0 1 1 1.95-.218ZM4.25 13.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm8.5-4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM5 3.25a.75.75 0 1 0 0 .005V3.25Z"></path></svg>
+        Merged
+    </div>
+</div> 
+</a>
+
+
+### HarfBuzz 한글 개선안 제시 
+
+<a class="github-link" href="https://github.com/harfbuzz/harfbuzz/issues/4850">
+<div class="github-item">
+    <img class="github-profile" src="https://avatars.githubusercontent.com/u/98369677?v=4"></img>
+    <div class="github-index">#4850</div>
+    <strong class="github-title">ligatures with hangul does not working correctly</strong>
+    <div class="github-status">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12" height="12"><path d="M11.28 6.78a.75.75 0 0 0-1.06-1.06L7.25 8.69 5.78 7.22a.75.75 0 0 0-1.06 1.06l2 2a.75.75 0 0 0 1.06 0l3.5-3.5Z"></path><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0Zm-1.5 0a6.5 6.5 0 1 0-13 0 6.5 6.5 0 0 0 13 0Z"></path></svg>
+        Closed
+    </div>
+</div> 
+</a>
+
+
+
+<style>
+    /** Global Styles on Here */
+    .github-link {
+        text-decoration: none;
+    }
+    .github-item {
+        border: 1px solid #f0f2f4;
+        display: flex;
+        align-items: center; 
+        color: black; 
+        padding: 8px;
+        width: 100%;
+        height: 32px;
+    }
+    .github-item > * {
+        margin-right: 8px;
+    }
+    .github-status {
+        color: grey; 
+    }
+    .github-profile {
+        border-raidus: 100%;
+    }
+</style>
