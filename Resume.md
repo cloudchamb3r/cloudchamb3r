@@ -26,9 +26,9 @@
 
 |Categogry|Skill|  
 |--|--|
-|Language| `Java(下)` `Kotlin(下)` `C++(下)` `NodeJS(下)` `Python3(下)` `TS/JS(下)` `C#(下)` `Go(下)`  |
-|Frameworks & Libraries| `Spring Boot(下)` `NestJS(下)` `ExpressJS(下)` `React(下)` `Tailwind(下)` `WPF(下)` `VueJS(下)` |
-|Database| `SQLServer(下)` `MySQL(下)` `Postgresql(下)`| 
+|Language| `Java(下)` / `Kotlin(下)` / `C++(下)` / `NodeJS(下)` / `Python3(下)`/ `TS/JS(下)` / `C#(下)` /  `Go(下)`  |
+|Frameworks & Libraries| `Spring Boot(下)` / `NestJS(下)` / `ExpressJS(下)` / `React(下)` / `Tailwind(下)` / `WPF(下)` / `VueJS(下)` |
+|Database| `SQLServer(下)` / `MySQL(下)` / `Postgresql(下)`| 
 |etc| `Debugging(中)` |
 
 
@@ -68,7 +68,8 @@ Codection 에서는 Pull Request 가 올라오면, 자동적으로 OpenAI 의 AP
                       |                                |
                       -- Parent [Handle Http Request] --
                              |
-                              -- Child Goroutine-------------> X (context 만료)
+                              -- Child Goroutine-------------> X 
+                                                         (context 만료)
                                                            
 ```
 디버깅을 통해 저의 예상대로 부모와 자식의 요구되는 context 수명의 불일치가 일어나는게 원인이였다는 것을 검증하였고, 
@@ -133,7 +134,7 @@ void removeTopic(@PathVariable int channelId, @PathVariable int topicId, Authent
 #### 문제 상황 및 해결 경험
 **10년 넘게 방치 되던 메모리 누수 문제**  
 사내 프로덕트에서 작업 중 프로그램을 켜둠에 따라 점차적으로 컴퓨터 및 소프트웨어가 느려지는 현상을 체감하였습니다.  
-문제를 파악하고자 프로그램의 메모리 사용량을 측정하는 툴을 사용하여 메모리 증가가 되는 상황을 재현하였고, CRT 라이브러리의 `_CrtDumpMemoryLeaks()` 를 통해 메모리 누수가 일어나는 지점을 파악하고 해결하였습니다. 이를 통해 메모리 효용성의 상당한 증가를 이루었습니다. 
+이를 해결하기 위해 프로그램의 메모리 사용량을 측정하는 툴을 사용하여 메모리 증가가 되는 상황을 재현 및 확인하였고, CRT 라이브러리의 `_CrtDumpMemoryLeaks()` 를 통해 메모리 누수가 일어나는 지점을 파악하고 해결하였습니다. 이를 통해 메모리 효용성의 상당한 증가를 이루었습니다. 
 
 
 ## OSS Activity 
