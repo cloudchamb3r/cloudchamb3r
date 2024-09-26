@@ -26,33 +26,35 @@
 
 |Categogry|Skill|  
 |--|--|
-|Language | `Java(下)` `Kotlin(下)` `C++(下)` `NodeJS(下)` `Python3(下)` `TS/JS(下)` `C#(下)` `Go(下)`  |
-|Frameworks & Libraries | `Spring Boot(下)` `NestJS(下)` `ExpressJS(下)` `React(下)` `Tailwind(下)` `WPF(下)` `VueJS(下)` |
-|Database | `SQLServer(下)` `MySQL(下)` `Postgresql(下)`| 
-|etc | `Debugging(中)` |
+|Language| `Java(下)` `Kotlin(下)` `C++(下)` `NodeJS(下)` `Python3(下)` `TS/JS(下)` `C#(下)` `Go(下)`  |
+|Frameworks & Libraries| `Spring Boot(下)` `NestJS(下)` `ExpressJS(下)` `React(下)` `Tailwind(下)` `WPF(下)` `VueJS(下)` |
+|Database| `SQLServer(下)` `MySQL(下)` `Postgresql(下)`| 
+|etc| `Debugging(中)` |
 
 
 ## Experience 
 > ### SofwareMaestro 15기 (2024 - 현재)
-> - 현재 코드리뷰 보조 솔루션 [Codection](https://github.com/swm-codection/gitea) 프로젝트 진행 중    
+> - 현재 코드리뷰 보조 솔루션 Codection 프로젝트 진행 중    
 > #
 
 >    
 > ### Acorn Academy (2023 - 2024)
+> - 실시간 다대다 채팅, 화상 공유를 지원하는 Dotori 프로젝트 진행 
 > - 학업 우수자로서 수료  
 > #
 
 > ### Medical Standard (2021 - 2022)
 > - 사내 웹 프로젝트의 보안 취약점 발견 및 개선 방안 제시 
 > - C++ Dicom Library 를 node-gyp 이용하여 Typescript로 포팅 
-> - PACS Client 메모리 누수 해결 및 성능 개선  
+> - PACS Client 메모리 누수 해결 및 성능 개선 
+> - 개발 편의성 향상을 위한 TDS SQL Query Sniffer 개발 
 > #
 
 > ### 42Seoul 2기 (2019 - 2020)
 > - 기수 내 최단 기간 공통 과정 돌파
 > # 
 
-## Projects 
+## Projects (Problem & Solution)
 
 ### Codection 
 오픈 소스 프로젝트인 gitea 를 기반으로 코드 리뷰 서비스 개발 
@@ -66,7 +68,7 @@ Codection 에서는 Pull Request 가 올라오면, 자동적으로 OpenAI 의 AP
                       |                                |
                       -- Parent [Handle Http Request] --
                              |
-                              -- Child Goroutine------------- X (context 만료)
+                              -- Child Goroutine-------------> X (context 만료)
                                                            
 ```
 디버깅을 통해 저의 예상대로 부모와 자식의 요구되는 context 수명의 불일치가 일어나는게 원인이였다는 것을 검증하였고, 
@@ -82,8 +84,57 @@ func (c Context) NewChildContext() *Context {
 <img src="https://media.discordapp.net/attachments/1265025134331170899/1288729827402055690/Screenshot_2024-09-26_at_2.12.04_PM.png?ex=66f63eae&is=66f4ed2e&hm=b81b5a0d5a5a463760513d849ba5e2f375f98520b8e51d7e0ee2fc672bb055b7&=&format=webp&quality=lossless"/>
 
 ### Dotori
-WebRTC 기술을 이용하여 Full mesh P2P 를 통해 다대다 실시간 화상 공유 기능 구현 
+WebRTC 기술을 이용하여 Full Mesh P2P 를 통해 다대다 실시간 화상 공유 기능 구현 
 #### 문제 상황 및 해결 경험
+**미흡한 권한 체크로 인한 취약점**  
+Dotori 프로젝트에는 채널과 토픽이라는 개념이 존재했습니다. 하나의 채널 아래에는 여러개의 토픽이 존재할 수 있고, 채널에 대한 권한이 있다면 자동적으로 하위에 있는 여러 토픽에 대한 권한을 갖습니다. 
+```
+Channel#1
+  ㄴ topic1
+  ㄴ topic2
+  ㄴ topic3
+
+Channel#2
+  ㄴ topic1
+  ㄴ topic2
+  ㄴ topic3
+```
+이때, 이전에 분석 및 제보하였던 모 상용 서비스의 취약점과 비슷한 취약점이 Dotori에도 존재할 수 있다고 생각하였고, 코드를 분석하여 본 결과 동일한 문제가 존재하고 있었습니다.
+문제가 되는 코드는 다음과 같습니다. (설명의 편의상 핵심 로직을 제외한 부분은 모두 제거하였습니다)
+```java
+@DeleteMapping("/channel/{channelId}/topic/{topicId}")
+void removeTopic(@PathVariable int channelId, @PathVariable int topicId, Authentication auth) {
+	var name = auth.getName(); 
+    // channel에 대한 권한 체크 
+	if (!channelService.hasPermission(channelId, name) {
+		throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+	}
+    // channel에 대한 권한이 있다면 topic 제거 
+	topicService.removeTopic(topicId);
+}
+```
+겉보기에는 위 코드는 이상이 없어보이지만 상당한 문제가 존재합니다.  
+그 문제는 channel 에 대한 권한 검증은 이루어지나 topic 과 channel 이 적절한 연관 관계인지는 검증하지 않는다는 점이였습니다.  
+따라서 문제가 되는 부분의 코드에 연관관계에 따라서만 제거하도록 로직을 변경해 발생하는 취약점을 해결하였습니다.  
+
+```java
+@DeleteMapping("/channel/{channelId}/topic/{topicId}")
+void removeTopic(@PathVariable int channelId, @PathVariable int topicId, Authentication auth) {
+	var name = auth.getName(); 
+	if (!channelService.hasPermission(channelId, name) {
+		throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+	}
+	topicService.removeTopic(channelId, topicId);
+}
+```
+
+### 사내 PACS 솔루션
+전 직장에서 작업을 진행했던 프로덕트입니다. 보안 및 법적인 우려로 내부 코드에 대한 자세한 설명은 할 수 없음을 미리 양해드립니다. 
+#### 문제 상황 및 해결 경험
+**10년 넘게 방치 되던 메모리 누수 문제**  
+사내 프로덕트에서 작업 중 프로그램을 켜둠에 따라 점차적으로 컴퓨터 및 소프트웨어가 느려지는 현상을 체감하였습니다.  
+문제를 파악하고자 프로그램의 메모리 사용량을 측정하는 툴을 사용하여 메모리 증가가 되는 상황을 재현하였고, CRT 라이브러리의 `_CrtDumpMemoryLeaks()` 를 통해 메모리 누수가 일어나는 지점을 파악하고 해결하였습니다. 이를 통해 메모리 효용성의 상당한 증가를 이루었습니다. 
+
 
 ## OSS Activity 
 
