@@ -1,8 +1,8 @@
 <div align="center">
   <section aria-label="introduce-me">
     <h3>Hi I'm cloudchamb3r 👐</h3>
-    Technical enthusiast  
-    Intereseted in OSS, Security and so on..   
+    <p>Technical enthusiast</p>
+    <p>Intereseted in OSS, Security and so on..</p> 
   </section>
   
   <section aria-label="badges">
