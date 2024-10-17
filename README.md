@@ -1,7 +1,7 @@
 Technical enthusiast  
 Intereseted in OSS, Security and so on.. 
 
-<img src="https://render.gitanimals.org/farms/cloudchamb3r"/>
+<img src="https://render.gitanimals.org/farms/cloudchamb3r" width="350"/>
 
 [![Solved.ac프로필](http://mazassumnida.wtf/api/v2/generate_badge?boj=jizon)](https://solved.ac/jizon)
 
