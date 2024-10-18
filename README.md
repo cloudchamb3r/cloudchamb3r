@@ -13,6 +13,9 @@
     <div>
       <img src="http://mazassumnida.wtf/api/v2/generate_badge?boj=jizon" width="350"/>
     </div>
+    <div>
+      <img src="https://holopin.me/cloudchamb3r"  height="180" />
+    </div>
   </section>
   
   <section aria-label="languages">
