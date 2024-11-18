@@ -2,7 +2,7 @@
   <section aria-label="introduce-me">
     <h3>Hi I'm cloudchamb3r 👐</h3>
     <p>Technical enthusiast</p>
-    <p>Intereseted in OSS, Security and so on..</p> 
+    <p>Interested in OSS, Security and so on..</p> 
   </section>
   
   <section aria-label="badges">
